@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Product Catalog";
+}
+
+<a asp-action="Create"
+    asp-controller="Product">Create Product</a>
+
+<h1>All available products</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Category)
+            </th>
+            @*TODO: Add Description*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Product p in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => p.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(m => p.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(m => p.Category)
+            </td>
+            <td>
+                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@p.ProductId">Edit Product</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@p.ProductId">Delete Product</a> |
+                <a class="btn btn-primary" asp-action="Add" asp-route-id="@p.ProductId" asp-controller="Cart">Add to Cart</a>
+             
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

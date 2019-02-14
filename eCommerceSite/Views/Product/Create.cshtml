@@ -1,0 +1,48 @@
+﻿@model Product 
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+@if(ViewData["Message"] != null)
+{
+    <h2 class="text-success text-lg-center">
+        @ViewData["Message"]
+    </h2>
+}
+
+<form asp-action="Create" method="post">
+
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"
+          class="text-danger"></span>
+    <br />
+    <label asp-for="Description"></label>
+    <input asp-for="Description" />
+    <span class="text-danger"
+          asp-validation-for="Description"></span>
+    <br />
+    <label asp-for="Price"></label>
+    <input asp-for="Price" />
+    <span class="text-danger"
+          asp-validation-for="Price"></span>
+    <br />
+    <label asp-for="Category"></label>
+    <input asp-for="Category" />
+    <span class="text-danger"
+          asp-validation-for="Category"></span>
+    <br />
+
+    <br /><br />
+    <input type="submit" value="Add Product" />
+
+</form>
+
+
+@section Scripts {
+    @{ 
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
